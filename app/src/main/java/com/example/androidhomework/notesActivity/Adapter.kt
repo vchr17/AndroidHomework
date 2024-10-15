@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.androidhomework.R
 import com.example.androidhomework.notesData.ListItem
+import com.example.androidhomework.notesData.MyDbManager
 import com.example.androidhomework.notesData.MyIntent
 
 class Adapter(listMain: ArrayList<ListItem>, contextM: Context) :
@@ -50,5 +51,11 @@ class Adapter(listMain: ArrayList<ListItem>, contextM: Context) :
         listArray.clear()
         listArray.addAll(listItems)
         notifyDataSetChanged()
+    }
+    fun removeItem(position: Int, dbManager: MyDbManager) {
+        dbManager.removeItemFromDb(listArray[position].id.toString())
+        listArray.removeAt(position)
+        notifyItemRangeChanged(0, listArray.size)
+        notifyItemRemoved(position)
     }
 }

@@ -3,6 +3,7 @@ package com.example.androidhomework.notesData
 import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
+import android.provider.BaseColumns
 
 class MyDbManager(context: Context) {
     val myDbHelper = MyDbHelper(context)
@@ -19,6 +20,10 @@ class MyDbManager(context: Context) {
         }
         db?.insert(MyDbNameClass.TABLE_NAME,null, values)
     }
+    fun removeItemFromDb(id: String) {
+        val selection = BaseColumns._ID + "=$id"
+            db?.delete(MyDbNameClass.TABLE_NAME,null, null)
+    }
     fun readDbData() : ArrayList<ListItem>{
         val dataList = ArrayList<ListItem>()
         val cursor = db?.query(MyDbNameClass.TABLE_NAME, null, null,null,
@@ -26,9 +31,11 @@ class MyDbManager(context: Context) {
             while (cursor?.moveToNext()!!){
                 val dataTitle = cursor.getString(cursor.getColumnIndexOrThrow(MyDbNameClass.COLUMN_NAME_TITLE))
                 val dataContent = cursor.getString(cursor.getColumnIndexOrThrow(MyDbNameClass.COLUMN_NAME_CONTENT))
+                val dataID = cursor.getInt(cursor.getColumnIndexOrThrow(BaseColumns._ID))
                 val item = ListItem()
                 item.title = dataTitle
                 item.content = dataContent
+                item.id = dataID
                 dataList.add(item)
             }
         cursor.close()
