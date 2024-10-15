@@ -1,4 +1,4 @@
-package com.example.androidhomework
+package com.example.androidhomework.onboarding
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,17 +7,23 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.androidhomework.loginAndRegistration.LoginActivity
+import com.example.androidhomework.R
 
-class NotesActivity : AppCompatActivity() {
+class FirstOnboardingScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_notes)
-
-        val addNoteButton: Button = findViewById(R.id.add_button)
-        addNoteButton.setOnClickListener {
-            val intent = Intent(this.baseContext, NotesAddActivity::class.java)
+        setContentView(R.layout.activity_first_onboarding_screen)
+        val intent = Intent(this.baseContext, SecondOnboardingScreen::class.java)
+        val skipIntent = Intent(this.baseContext, LoginActivity::class.java)
+        val button = findViewById<Button>(R.id.buttonNext)
+        button.setOnClickListener {
             startActivity(intent)
+        }
+        val skipButton = findViewById<Button>(R.id.skip_button)
+        skipButton.setOnClickListener {
+            startActivity(skipIntent)
         }
 
 

@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/material_dynamic_neutral80"
     android:backgroundTintMode="add"
-    tools:context=".NotesAddActivity">
+    tools:context=".notesActivity.NotesAddActivity">
 
     <EditText
         android:id="@+id/titleOfNote"
@@ -36,11 +36,13 @@
         android:ems="10"
         android:gravity="top"
         android:hint="Note text"
-        android:inputType="text"
+        android:inputType="textMultiLine"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleOfNote" />
+        app:layout_constraintTop_toBottomOf="@+id/titleOfNote"
+        app:layout_constraintVertical_bias="0.0" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/saveButton"
@@ -48,10 +50,11 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="30dp"
+        android:alpha="0.6"
         android:clickable="true"
+        android:contentDescription="Saving button"
         android:focusable="true"
         app:backgroundTint="@color/design_default_color_secondary"
-        android:contentDescription="Saving button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_save" />
@@ -60,14 +63,15 @@
         android:id="@+id/backButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
         android:layout_marginBottom="30dp"
-        android:contentDescription="Back button"
+        android:alpha="0.6"
         android:clickable="true"
+        android:contentDescription="Back button"
         android:focusable="true"
         app:backgroundTint="@color/design_default_color_secondary_variant"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/saveButton"
+        app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_back" />
 
 

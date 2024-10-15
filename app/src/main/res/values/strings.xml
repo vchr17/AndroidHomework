@@ -36,6 +36,9 @@
     <string name="reg_failed">Registration incomplete, you need to enter all fields </string>
     <string name="reg_succ">Registration complete </string>
     <string name="back_to_signing_in">Back to signing in</string>
+    <!-- Notes -->
+    <string name="note_saved">Note saved</string>
+    <string name="save_failed">You can not save empty note</string>
 
 
 </resources>
